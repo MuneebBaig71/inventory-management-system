@@ -1,12 +1,14 @@
 class Admin():
     products = []
     udetails = {"name":"muneeb", "password":"1234"}
-    def __init__(self,uname,id,password):
-        self.uname = uname
-        self.id = id
-        self.password = password
+    # def __init__(self,uname,id,password):
+    #     self.uname = uname
+    #     self.id = id
+    #     self.password = password
     def login(self):
-        if self.uname == Admin.udetails["name"] and self.password == Admin.udetails["password"]:
+        name =input("Enter your name: ")
+        password = input("Enter your password: ")
+        if name == Admin.udetails["name"] and password == Admin.udetails["password"]:
             print("Login successful")
             return True
         else:
@@ -29,7 +31,9 @@ class Admin():
         print(f"Product '{name}' added successfully.")
 
     def delete_product(self):
-        print("current products:")
+        print("Current products in inventory:")
+        for product in Admin.products:
+            print(product)
         try:
             del_id = input("Which product ID do you want to delete? ")
             print(product)
@@ -56,10 +60,10 @@ class Admin():
 
 
     def check_low_stock(self, threshold=5):
-        print("Products with low stock:")
+        
         for product in Admin.products:
             if product.stock_quantity < threshold:
-                print(product)
+                print("Products with low stock:", product)
             else:
                 print("None")
 
@@ -72,34 +76,51 @@ class Product:
         self.stock_quantity = stock_quantity
 
     def __str__(self):
-        return f"{self.product_id}: {self.name}, {self.category}, ${self.price}, Stock: {self.stock_quantity}"
+        return f"product ID:{self.product_id}, name: {self.name}, category:{self.category}, price:${self.price}, Stock: {self.stock_quantity}"
 
 class User(Admin):
     udetails = {"username": "user1", "password": "userpass"} 
-    def __init__(self,uname,id, password):
-        super().__init__(uname,id,password)
+    # def __init__(self,uname,id, password):
+    #     super().__init__(uname,id,password)
     def view_product(self):
         print(f"current items in inventory are: {Admin.products}")
     def login(self):
-        if self.uname == User.udetails["username"] and self.password == User.udetails["password"]:
+        name =input("Enter your name: ")
+        password = input("Enter your password: ")
+        if name == Admin.udetails["name"] and password == Admin.udetails["password"]:
             print("User login successful")
             return True
         else:
             print("User login failed")
             return False
+class Console:
+    @staticmethod
+    def menu():
+        print("Welcome to the Inventory Management System:\n Please select an option:\n 1. Admin\n 2. User\n 3. Exit")
+        choice = input("Enter your option: ")
+        return choice
 
-admin = Admin("muneeb", 1, "1234")  
-user1 = User("user1", 2, "userpass")
 
-if admin.login():
-    admin.add_product()             # Admin can add products after login
-    admin.check_low_stock()        # Check for low stock products
-    admin.edit_product()           # Admin can edit existing products
-    admin.delete_product()         # Admin can delete products
+console =Console()
+admin = Admin()  
+user1 = User()
+
+option =console.menu()
+if option == "1":
+    if admin.login():
+        admin.add_product()            # Admin can add products after login
+        admin.check_low_stock()        # Check for low stock products
+        admin.edit_product()           # Admin can edit existing products
+        admin.delete_product()         # Admin can delete products
+    else:
+        print("Access denied. Please check your login credentials.")
+    
+elif option == "2":  
+    if user1.login():
+        user1.view_product() 
+    else:
+        print("Access denied. Please check your login credentials.")     
+
 else:
-    print("Access denied. Please check your login credentials.")
-
-if user1.login():  
-    user1.view_product()           
-else:
-    print("Access denied for User. Please check your login credentials.")
+        print("Wrong input.")    
+    
