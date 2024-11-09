@@ -6,15 +6,9 @@ class Admin():
     #     self.id = id
     #     self.password = password
     def login(self):
-<<<<<<< HEAD
-        uname = input("Enter username: ")
-        upass = input("Enter password: ")
-        if uname == Admin.udetails["name"] and upass == Admin.udetails["password"]:
-=======
         name =input("Enter your name: ")
         password = input("Enter your password: ")
         if name == Admin.udetails["name"] and password == Admin.udetails["password"]:
->>>>>>> 650bf9662765f269cd5074c7913d147290f93518
             print("Login successful")
             return True
         else:
@@ -100,15 +94,9 @@ class User(Admin):
             for product in Admin.products:
                 print(f"current items in inventory are: {product}")
     def login(self):
-<<<<<<< HEAD
-        uname = input("Enter username: ")
-        upass = input("Enter password: ")
-        if uname == Admin.udetails["name"] and upass == Admin.udetails["password"]:
-=======
         name =input("Enter your name: ")
         password = input("Enter your password: ")
         if name == Admin.udetails["name"] and password == Admin.udetails["password"]:
->>>>>>> 650bf9662765f269cd5074c7913d147290f93518
             print("User login successful")
             return True
         else:
@@ -121,11 +109,8 @@ class Console:
         choice = input("Enter your option: ")
         return choice
 
-<<<<<<< HEAD
 admin = Admin()  
 user1 = User()
-=======
->>>>>>> 650bf9662765f269cd5074c7913d147290f93518
 
 console =Console()
 admin = Admin()  
