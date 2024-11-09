@@ -29,7 +29,12 @@ class Admin():
         new_product = Product(product_id, name, category, price, stock_quantity)
         Admin.products.append(new_product)
         print(f"Product '{name}' added successfully.")
-
+    def view_product(self):
+        if len(Admin.products) == 0:
+            print("No products in inventory.")
+        else:
+            for product in Admin.products:
+                print(f"current items in inventory are: {product}")
     def delete_product(self):
         print("Current products in inventory:")
         for product in Admin.products:
@@ -83,7 +88,11 @@ class User(Admin):
     # def __init__(self,uname,id, password):
     #     super().__init__(uname,id,password)
     def view_product(self):
-        print(f"current items in inventory are: {Admin.products}")
+        if len(Admin.products) == 0:
+            print("No products in inventory.")
+        else:
+            for product in Admin.products:
+                print(f"current items in inventory are: {product}")
     def login(self):
         name =input("Enter your name: ")
         password = input("Enter your password: ")
@@ -108,10 +117,36 @@ user1 = User()
 option =console.menu()
 if option == "1":
     if admin.login():
-        admin.add_product()            # Admin can add products after login
-        admin.check_low_stock()        # Check for low stock products
-        admin.edit_product()           # Admin can edit existing products
-        admin.delete_product()         # Admin can delete products
+        while True:
+                print("\nInventory Management System. ")
+                print("1. Add products")
+                print("2. View products")
+                print("3. Edit products")
+                print("4. Delete products")
+                print("5. Exit")
+
+                try:
+                    choice = int(input("Enter a choice: "))
+                    if choice == 1 :
+                        admin.add_product()
+                    elif choice == 2 :
+                        admin.view_product()
+                    elif choice == 3 :
+                        admin.edit_product()
+                    elif choice == 4 :
+                        admin.delete_product()
+                    elif choice == 5 :
+                        print("Exiting...")
+                        break
+                    else:
+                        print("Invalid choice.Please try again")
+
+                except ValueError as e:
+                    print(f"ERROR OCCURRED: {e}")
+        # admin.add_product()            # Admin can add products after login
+        # admin.check_low_stock()        # Check for low stock products
+        # admin.edit_product()           # Admin can edit existing products
+        # admin.delete_product()         # Admin can delete products
     else:
         print("Access denied. Please check your login credentials.")
     
@@ -120,7 +155,8 @@ elif option == "2":
         user1.view_product() 
     else:
         print("Access denied. Please check your login credentials.")     
-
+elif option == "3":
+    print("Exiting...")
 else:
         print("Wrong input.")    
     
