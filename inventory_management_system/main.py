@@ -1,12 +1,14 @@
 class Admin():
     products = []
     udetails = {"name":"muneeb", "password":"1234"}
-    def __init__(self,uname,id,password):
-        self.uname = uname
-        self.id = id
-        self.password = password
+    # def __init__(self,uname,id,password):
+    #     self.uname = uname
+    #     self.id = id
+    #     self.password = password
     def login(self):
-        if self.uname == Admin.udetails["name"] and self.password == Admin.udetails["password"]:
+        uname = input("Enter username: ")
+        upass = input("Enter password: ")
+        if uname == Admin.udetails["name"] and upass == Admin.udetails["password"]:
             print("Login successful")
             return True
         else:
@@ -76,20 +78,22 @@ class Product:
 
 class User(Admin):
     udetails = {"username": "user1", "password": "userpass"} 
-    def __init__(self,uname,id, password):
-        super().__init__(uname,id,password)
+    # def __init__(self,uname,id, password):
+    #     super().__init__(uname,id,password)
     def view_product(self):
         print(f"current items in inventory are: {Admin.products}")
     def login(self):
-        if self.uname == User.udetails["username"] and self.password == User.udetails["password"]:
+        uname = input("Enter username: ")
+        upass = input("Enter password: ")
+        if uname == Admin.udetails["name"] and upass == Admin.udetails["password"]:
             print("User login successful")
             return True
         else:
             print("User login failed")
             return False
 
-admin = Admin("muneeb", 1, "1234")  
-user1 = User("user1", 2, "userpass")
+admin = Admin()  
+user1 = User()
 
 if admin.login():
     admin.add_product()             # Admin can add products after login
