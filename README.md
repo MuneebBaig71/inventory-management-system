@@ -1,48 +1,98 @@
-## Final Project: Inventory Management System (IMS)
+# Inventory Management System
 
-### Project Title:
+## Description
+The Inventory Management System is a console-based application that allows users to manage product inventory through an admin or user interface. Admin users can add, edit, delete, and view product details, while regular users can only view the products. The application uses a simple login system for both roles and provides error handling for invalid inputs.
 
-**Inventory Management System (IMS)**
+## Features
+1. **Admin Functionalities**:
+   - **Add Product**: Add new products to the inventory with details like ID, name, category, price, and stock quantity.
+   - **View Product**: View all products currently in the inventory.
+   - **Edit Product**: Modify the details of existing products.
+   - **Delete Product**: Remove products from the inventory based on product ID.
+   - **Check Low Stock**: Identify products that have low stock levels based on a defined threshold.
+  
+2. **User Functionalities**:
+   - **View Products**: Users can view all products in the inventory without modification privileges.
 
-### Objective:
+3. **Console Interface**:
+   - Provides a user-friendly menu interface that guides both admin and regular users through available options.
+   - Error handling for invalid inputs to improve user experience.
 
-Build a console-based system that manages inventory for a small business. The system should allow admins to create, update, view, and delete products in the inventory while keeping track of stock levels and handling multiple users with role-based permissions.
+## Classes and Methods
 
-### Requirements & Functionalities:
+- **Class: `Admin`**
+  - **Methods**:
+    - `login()`: Authenticates admin credentials.
+    - `add_product()`: Adds a product to the inventory.
+    - `view_product()`: Lists all products in the inventory.
+    - `delete_product()`: Deletes a product by its ID.
+    - `edit_product()`: Updates details of an existing product.
+    - `check_low_stock()`: Checks and displays products with stock below a specified threshold.
 
-1. **User Authentication and Role Management**
+- **Class: `Product`**
+  - **Attributes**:
+    - `product_id`, `name`, `category`, `price`, `stock_quantity`.
+  - **Method**:
+    - `__str__()`: Provides a formatted string representation of a product.
 
-   - Support different roles like “Admin” and “User.”
-   - Admins can add, edit, and delete products, whereas Users can only view inventory details.
-   - Implement a basic login system with username and password validation.
+- **Class: `User`**
+  - **Methods**:
+    - `login()`: Authenticates user credentials.
+    - `view_product()`: Lists all products in the inventory.
+  
+- **Class: `Console`**
+  - **Methods**:
+    - `menu()`: Displays the main menu options for the system and takes user input.
 
-2. **Product Management (OOP Concepts)**
+## Usage
 
-   - Create a `Product` class with attributes like `product_id`, `name`, `category`, `price`, and `stock_quantity`.
-   - Create methods for adding, editing, and deleting products.
-   - Store product information using lists or dictionaries.
+1. **Start the Application**:
+   - Run the main script. You will see a welcome menu with options to select either Admin or User mode.
 
-3. **Inventory Operations**
+2. **Admin Mode**:
+   - Choose "1" for Admin and enter the correct admin credentials.
+   - If login is successful, an additional menu will appear, allowing you to:
+     - Add new products.
+     - View the current inventory.
+     - Edit or delete existing products.
+     - Check for low-stock items.
+     - Exit the admin menu.
 
-   - Track stock levels: when stock reaches a low threshold, prompt a restocking message.
-   - Implement methods for viewing all products, searching by product name or category, and filtering by stock levels.
-   - Allow stock adjustments for existing products (e.g., restock or reduce inventory based on sales).
+3. **User Mode**:
+   - Choose "2" for User and enter the correct user credentials.
+   - If login is successful, the user can view the list of products in the inventory.
 
-4. **Error Handling**
-   - Ensure proper error handling for invalid inputs, such as incorrect login details or attempts to update non-existent products.
-   - Use exceptions to handle potential issues, ensuring smooth flow.
+4. **Exit**:
+   - Choose "3" from the main menu to exit the application.
 
-### Learning Outcomes
+## Example Workflow
 
-- **OOP principles**: Implement classes, encapsulation, and methods for CRUD operations.
-- **Data Structures**: Use dictionaries and lists for data storage and manipulation.
-- **Logic Building**: Develop functions for role-based access, transaction handling, and inventory management.
-- **Error Handling**: Practice exception handling for robust code.
+```plaintext
+Welcome to the Inventory Management System:
+ Please select an option:
+ 1. Admin
+ 2. User
+ 3. Exit
 
-This project provides hands-on practice with the concepts you’ve learned while focusing on logic-based development.
+# Selecting "1" for Admin and entering credentials
+Enter your name: muneeb
+Enter your password: 1234
+Login successful
 
-## Instructions
+# Admin-specific menu is displayed
+Inventory Management System.
+1. Add products
+2. View products
+3. Edit products
+4. Delete products
+5. Exit
 
-- Please create the docker image of the template provided in the repository.
-- You can use DevContainer to write your code.
-- The basic requirement is the console based project but if anyone wants to extend it with more features, he can go for it. For a basic GUI, `streamlit` can be used. We have already added it in the packages.
+Enter a choice: 1
+Enter product ID: 101
+Enter product name: Apple
+Enter product category: Fruit
+Enter product price: 1.99
+Enter stock quantity: 50
+Product 'Apple' added successfully.
+
+# Additional options to manage products follow.
