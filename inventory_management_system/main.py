@@ -109,8 +109,6 @@ class Console:
         choice = input("Enter your option: ")
         return choice
 
-admin = Admin()  
-user1 = User()
 
 console =Console()
 admin = Admin()  
