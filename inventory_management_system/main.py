@@ -85,8 +85,8 @@ class Product:
     def __str__(self):
         return f"product ID:{self.product_id}, name: {self.name}, category:{self.category}, price:${self.price}, Stock: {self.stock_quantity}"
 
-class User(Admin):
-    udetails = {"username": "user1", "password": "userpass"} 
+class User():
+    udetails = {"uname": "user1", "password": "userpass"} 
     # def __init__(self,uname,id, password):
     #     super().__init__(uname,id,password)
     def view_product(self):
@@ -98,7 +98,7 @@ class User(Admin):
     def login(self):
         name =input("Enter your name: ")
         password = input("Enter your password: ")
-        if name == Admin.udetails["name"] and password == Admin.udetails["password"]:
+        if name == User.udetails["uname"] and password == User.udetails["password"]:
             print("User login successful")
             return True
         else:
