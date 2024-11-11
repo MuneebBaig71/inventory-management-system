@@ -85,7 +85,8 @@ Inventory Management System.
 2. View products
 3. Edit products
 4. Delete products
-5. Exit
+5. Check Stock Level
+6. Exit
 
 Enter a choice: 1
 Enter product ID: 101
