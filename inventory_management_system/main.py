@@ -147,7 +147,7 @@ if option == "1":
                         print("Invalid choice.Please try again")
 
                 except ValueError as e:
-                    print(f"ERROR OCCURRED: {e}")
+                    print(f"Wrong input: {e}")
         # admin.add_product()            # Admin can add products after login
         # admin.check_low_stock()        # Check for low stock products
         # admin.edit_product()           # Admin can edit existing products
