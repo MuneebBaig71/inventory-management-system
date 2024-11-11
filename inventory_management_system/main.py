@@ -70,7 +70,7 @@ class Admin():
                 if product.stock_quantity < threshold:
                     print("Products with low stock:", product)
                 else:
-                    print("None")
+                    print("No products with low stock found.")
         else:
             print("No products in inventory.")
 
