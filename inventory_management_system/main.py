@@ -65,12 +65,14 @@ class Admin():
 
 
     def check_low_stock(self, threshold=5):
-        
-        for product in Admin.products:
-            if product.stock_quantity < threshold:
-                print("Products with low stock:", product)
-            else:
-                print("None")
+        if len(Admin.products) > 0:
+            for product in Admin.products:
+                if product.stock_quantity < threshold:
+                    print("Products with low stock:", product)
+                else:
+                    print("None")
+        else:
+            print("No products in inventory.")
 
 class Product:
     def __init__(self, product_id, name, category, price, stock_quantity):
@@ -123,7 +125,8 @@ if option == "1":
                 print("2. View products")
                 print("3. Edit products")
                 print("4. Delete products")
-                print("5. Exit")
+                print("5. Check Stock Level")
+                print("6. Exit")
 
                 try:
                     choice = int(input("Enter a choice: "))
@@ -136,6 +139,8 @@ if option == "1":
                     elif choice == 4 :
                         admin.delete_product()
                     elif choice == 5 :
+                        admin.check_low_stock()
+                    elif choice == 6 :
                         print("Exiting...")
                         break
                     else:
